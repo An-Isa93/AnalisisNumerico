@@ -98,15 +98,6 @@ function obtenerMatrizDesdeInputs(n,opcion) {
                 inputIndex++;
             }
     
-            // Añadir la matriz identidad a la izquierda
-           /* for (let j = 0; j < n; j++) {
-                if (i === j) {
-                    fila.push(1); // Coloca 1 en la diagonal principal
-                } else {
-                    fila.push(0); // Coloca 0 en los demás elementos
-                }
-            }*/
-    
             // Extraer y añadir el término independiente al final
             terminosIndependientes = parseFloat(inputs[inputIndex].value) || 0;
             fila.push(terminosIndependientes);
@@ -159,10 +150,7 @@ function mostrarMatriz(n, matriz, opcion) {
                 celda.innerText = matriz[i][j].toFixed(2); // Inserta el valor de la matriz en la celda (redondeado a 2 decimales)
                 fila.appendChild(celda); // Añade la celda a la fila
             }
-           /* for (let k = 0; k < n; k++) {
-                matriz[k][n + k] = 1;
-              }*/
-
+    
             tabla.appendChild(fila); // Añade la fila a la tabla
         }
         
@@ -397,54 +385,4 @@ function montante(n, m) {
         console.log("x" + (i + 1) + " = " + (m[i][n] / m[i][i]));
     }
 
-    // Mostrar la adjunta
-    /*let texto = document.createElement('p');
-    texto.innerText="La adjunta es:";
-    contenedor.appendChild(texto);
-    console.log("\nLa adjunta es:");
-    for (let i = 0; i < n; i++) {
-        let fila = document.createElement('tr'); // Crea una nueva fila
-        let adjuntaFila = [];
-        for (let j = 0; j < n; j++) {
-            let celda = document.createElement('td'); 
-            celda.innerText = m[i][n+j].toFixed(2); 
-            fila.appendChild(celda);
-            adjuntaFila.push(m[i][n + j]);
-        }
-        console.log(adjuntaFila.join(" "));
-        tablaAdjunta.appendChild(fila); 
-         //Agrega la tabla al contenedor
-
-    }
-
-    contenedor.appendChild(tablaAdjunta);
-    contenedor.appendChild(document.createElement('br')); 
-    // Mostrar la inversa
-    if(determinante === 0){
-        console.log("La matriz no tiene inversa debido a que el determinante es 0");
-    }
-    else{
-        let textIn = document.createElement('p');
-        textIn.innerText="La inversa es:";
-        contenedor.appendChild(textIn);
-        console.log("\nLa inversa es:");
-        for (let i = 0; i < n; i++) {
-            let fila = document.createElement('tr');
-            let inversaFila = [];
-            for (let j = 0; j < n; j++) {
-                let celda = document.createElement('td'); 
-                celda.innerText = (m[i][n+j]/determinante).toFixed(2); 
-                fila.appendChild(celda);
-                inversaFila.push((m[i][n + j] / determinante).toFixed(2));
-            }
-            console.log(inversaFila.join(" "));
-            tablaInversa.appendChild(fila); 
-        }
-        contenedor.appendChild(tablaInversa);
-
-    }*/
 }
-
-
-
-
