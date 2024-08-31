@@ -1,0 +1,72 @@
+*{
+    font-family: "Century Gothic";
+}
+h1{
+    text-align: center;
+}
+input{
+    padding: 5px;
+    margin-left: 1%;
+}
+
+button{
+    background: #cae6e0;
+    border:1px solid #9ad8cb;
+    padding: 10px;
+    margin-bottom: 2%;
+}
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+.container{
+    margin-left: 10%;
+}
+.tabla-matriz{
+    display: flex; /* Convertimos el contenedor en flexbox */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    flex-direction: column;
+   
+}
+.tabla-matriz td,.tabla-matriz th{
+    padding: 10px;
+    border:1px solid #7bbdaf !important;
+  
+}
+.tableContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tableContainer td,.tableContainer th, .tableContainer table {
+   border: none;
+   margin-top: 2%;
+   margin-bottom: 2%;
+
+}
+.tableContainer input{
+    border:1px solid #7bbdaf !important;
+    font-size: medium;
+}
+.table input{
+    padding: 5px;
+    text-align: center;
+    font-size: medium;
+
+}
+
+input:focus{
+    outline: none;
+}
+
+select{
+    font-family: "Century Gothic";
+    padding: 5px;
+    margin-top: 2%;
+    margin-left: 1%;
+}
+select:focus{
+    outline: none;
+}
