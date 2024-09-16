@@ -23,41 +23,41 @@ def limpiar_pantalla():
 
 def validate(expresion):
     try:
-        #Se prueba la expresion con un valor de prueba para validar que sea una función
         x=1
         eval(expresion,{"x":x, **allow_function})
         return True
     except Exception as e:
         print(f"Error en la expresion: {e}")
         return False
+    
+while True:
+   # expresion = input("Ingresa la función matemática en terminos de x (ejemplo: x**2 + 3*x + 1, tambien se puede usar sin,cos, log,exp,etc): ")
+    if validate(expresion):
+        print("Expresion válida.")
+        break
+    else:
+        print("Expresion ingresada no válida")
+        input("Presiona cualquier tecla para intentar de nuevo...")
+        limpiar_pantalla()
         
-def iteration(x, mistake, function, derivate):
-    result = []
-    ideal_mistake = mistake + 1  # Inicializamos el error para entrar al ciclo
+def iteration(x,mistake,function,derivate):
+    result=[]
+    ideal_mistake=mistake+1
     x_sym = sp.symbols('x')
+    while ideal_mistake>mistake:
 
-    while ideal_mistake > mistake:
-        # Se sustituye el valor de x en la función y su derivada
-        fx = function.subs(x_sym, x)
-        dfx = derivate.subs(x_sym, x)
+        fx = function.subs(x_sym,x)
+        dfx = derivate.subs(x_sym,x)
 
-        xi_plus = x - (fx / dfx)
+        xi_plus=x-((fx)/dfx)
+        result.append("xi: ",round(xi_plus,5))
 
-        # Cálculo del error
-        ideal_mistake = abs((xi_plus - x) / xi_plus) * 100
+        x_before=x
+        x=xi_plus
 
-        # Agregar a la lista de resultados el xi y el error
-        result.append({"xi": round(xi_plus, 5), "error": round(ideal_mistake, 6)})
-
-        # Actualizar x
-        x = xi_plus
-
-        # Si el error es suficientemente pequeño, salir del ciclo
-        if ideal_mistake <= mistake:
-            break
-
+        ideal_mistake = abs((xi_plus - x_before) / xi_plus) * 100
+        print("Error: ", round(ideal_mistake,4))
     return result
-
 
 @app.route('/', methods=['GET', 'POST'])       
 def index(): 
@@ -72,15 +72,18 @@ def index():
             dfx = sp.diff(expresion,x_sym)
 
             results = iteration(x,mistake,fx,dfx)
-            
-            return render_template('index.html', expresion=expresion, derivada=str(dfx),results=results,x=x)
-            
+            return render_template('index.html', expresion=expresion, derivada=str(dfx),results=results)
         else:
             return render_template('index.html', error="Expresión inválida")
-        
     return render_template('index.html') 
 
 if __name__ =='__main__':
     app.run(debug=True)
        
-
+"""   print(f"Funcion: {expresion}")
+    print(f"La derivada es: {dfx}")
+    mistake = -1
+    while mistake<0:
+        mistake = float(input("Ingrese el porcentaje de error deseado: "))
+"""
+#print("iteracion: ", iteration(value_x))
