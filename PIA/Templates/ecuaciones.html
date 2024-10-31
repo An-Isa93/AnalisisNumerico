@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilosE.css') }}">
+</head>
+<body>
+    <h1>Calculadora de Ecuaciones lineales</h1>
+    <div class="container">
+    <form action="/ecuaciones" method="POST">
+        <label>Ingrese el tamaño de la mátriz</label>
+        <input id="size">
+        <button type="button" onclick="validar()">Aceptar</button>
+        <div id="tablaContainer" class="tableContainer"></div>
+        <label>¿Qué método desea usar?</label>
+        <select id="opcion">
+            <option value="1">Gauss Jordan</option>
+            <option value="2">Método Montante</option>
+        </select>
+        <button type="button" id="resolver" onclick="Menu()">Aceptar</button>
+        <button id="limpiar" onclick="limpiar()">Limpiar</button>
+        <button type="button" onclick="volver()">Volver</button>
+        <div id="tabla-matriz" class="tabla-matriz"></div>
+    </form>
+      
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='scriptE.js') }}"></script>
+
+</body>
+</html>

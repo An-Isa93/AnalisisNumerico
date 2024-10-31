@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolación Lineal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+   
+    <div id="Ilineal" > 
+        <form action="/interLineal" method="POST">
+            <ion-list>
+
+                <h1>Interpolación lineal </h1>
+                <ion-item> 
+                    <label>Ingrese la función en términos de x: </label>
+                    <ion-input fill="solid" id="expresion" name="expresion" required>
+                </ion-item>
+               
+                <ion-item>
+                    <label>Ingrese el punto 1: </label>
+                    <ion-input fill="solid" type="number" id="x0" name="x0" step="0.0000001" required>
+                </ion-item>
+                
+                <ion-item>
+                    <label>Ingrese el punto 2: </label>
+                    <ion-input fill="solid" type="number" id="x1" name="x1" step="0.0000001" required >
+                </ion-item>
+                
+                <ion-item>
+                    <label>Ingrese el valor a calcular:</label>
+                    <ion-input fill="solid" type="number" id="x_input" name="x_input" step="0.0000001" required >
+                </ion-item>
+                
+                <ion-button expand="full" type="submit">Calcular</ion-button>
+                {% if p %}
+                <p style="color:red">{{p}}</p>
+        
+            {% endif%}
+                {% if expresion %}
+                <p>Expresión ingresada: {{ expresion }}</p>
+            {% else %}
+                <p>No se recibió ninguna expresión.</p>
+            {% endif %}
+            {% if result %}
+            <p>Resultado: {{result}}</p>
+            <p>Porcentaje de error: {{error}}%</p>
+            {% endif %}
+            <ion-button expand="full" type="button" onclick="volver()">Volver</ion-button>
+            </ion-list>
+       
+           
+        
+        </form>
+   
+    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic.js"></script>
+</body>
+</html>

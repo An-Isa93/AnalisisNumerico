@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ánalisis Numérico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+</head>
+<body>
+    <form class="index" id="formulario" method="POST">
+        <h1>Calculadora de Múltiples Métodos</h1>
+        <h2>Selecciona un método:</h2>
+        <ion-list>
+            <ion-item>
+                <ion-select  id="opcion" name="opcion" label="Seleccione un método">
+                    <ion-select-option value="1">Interpolación Lineal</ion-select-option>
+                    <ion-select-option value="2">Polinomio de Interpolación Único</ion-select-option>
+                    <ion-select-option value="3">Newton Raphson</ion-select-option>
+                    <ion-select-option value="4">Ecuaciones Lineales</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="full" type="button" onclick="redireccionar()">Aceptar</ion-button>
+    </form> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic.js"></script>
+</body>
+</html>

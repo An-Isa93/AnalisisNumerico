@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polinomio de Interpolación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+
+</head>
+<body>
+    <div id="Iunico" >
+        <h1 class="title">Polinomio de Interpolación Único</h1>
+        <form action="/interUnico" method="POST">
+           <ion-list>
+                <ion-item>
+                    <label>Ingrese el grado del polinomio:</label>
+                    <ion-input fill="solid"   placeholder="1" type="number" id="n" name="n" min="1" required>
+                </ion-item>
+
+                <ion-item>
+                    <label>Ingrese el valor de x a interpolar:</label>
+                    <ion-input fill="solid" placeholder="0" type="number" id="x" name="x" step="0.0000001"  required>
+                </ion-item>
+                <ion-button expand="full" type="button" onclick="tabla()">Aceptar</ion-button>
+            
+           
+            <div id="container"></div>
+            {% if result is not none and n is not none %}
+            <p>Matriz</p>
+            {% for i in range(n) %}
+                <p>{{ matrix[i] }}</p>
+            {% endfor %}
+            <p>Resultado de la matriz</p>
+            {% for i in range(n) %}
+                <p>{{ gaussR[i] }}</p>
+            {% endfor %}
+            <p>P{{ n-1 }}({{ x_in }}) = {{ result }}</p>
+        {% endif %}
+
+        </form>
+        <ion-button expand="full" type="button" onclick="volver()">Volver</ion-button>
+    </ion-list>
+    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic.js"></script>
+</body>
+</html>
